@@ -69,3 +69,16 @@ func (s *AppServer) Start(port string) error {
 
 	return nil
 }
+
+// StartStdio 启动 stdio 模式的 MCP 服务器
+func (s *AppServer) StartStdio(ctx context.Context) error {
+	logrus.Info("启动 MCP Server (stdio 传输模式)")
+
+	// 使用 stdio 传输运行 MCP 服务器
+	transport := &mcp.StdioTransport{}
+	if err := s.mcpServer.Run(ctx, transport); err != nil {
+		return err
+	}
+
+	return nil
+}
