@@ -1,6 +1,7 @@
 package cookies
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 
@@ -70,7 +71,7 @@ func GetCookiesFilePath() string {
 	if path == "" {
 		path = "cookies.json" // fallback，本地调试时用当前目录
 	}
-
+	fmt.Printf("Cookies Path: %s\n", path)
 	// 文件不存在，使用新路径（当前目录）
 	return path
 }

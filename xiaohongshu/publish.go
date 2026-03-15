@@ -15,7 +15,32 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-// PublishImageContent 发布图文内容
+func inputMultiLineText(elem *rod.Element, text string) error {
+	if text == "" {
+		return nil
+	}
+
+	lines := strings.Split(text, "\n")
+
+	for i, line := range lines {
+		if err := elem.Input(line); err != nil {
+			return errors.Wrapf(err, "input line %d failed", i+1)
+		}
+
+		if i < len(lines)-1 {
+			ka, err := elem.KeyActions()
+			if err != nil {
+				return errors.Wrapf(err, "create key action failed")
+			}
+			if err := ka.Press(input.Enter).Do(); err != nil {
+				return errors.Wrapf(err, "press enter failed")
+			}
+		}
+	}
+
+	return nil
+}
+
 type PublishImageContent struct {
 	Title        string
 	Content      string
@@ -293,7 +318,7 @@ func submitPublish(page *rod.Page, title, content string, tags []string, schedul
 	if !ok {
 		return errors.New("没有找到内容输入框")
 	}
-	if err := contentElem.Input(content); err != nil {
+	if err := inputMultiLineText(contentElem, content); err != nil {
 		return errors.Wrap(err, "输入正文失败")
 	}
 	if err := waitAndClickTitleInput(titleElem); err != nil {
