@@ -186,7 +186,7 @@ func registerTools(server *mcp.Server, appServer *AppServer) {
 	)
 
 	// 工具 3: 删除 cookies（登录重置）
-	mcp.AddTool(server,
+	/*mcp.AddTool(server,
 		&mcp.Tool{
 			Name:        "delete_cookies",
 			Description: "删除 cookies 文件，重置登录状态。删除后需要重新登录。",
@@ -199,7 +199,7 @@ func registerTools(server *mcp.Server, appServer *AppServer) {
 			result := appServer.handleDeleteCookies(ctx)
 			return convertToMCPResult(result), nil, nil
 		}),
-	)
+	)*/
 
 	// 工具 4: 发布内容
 	mcp.AddTool(server,
