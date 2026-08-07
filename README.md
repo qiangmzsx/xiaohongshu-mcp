@@ -37,7 +37,13 @@ MCP for 小红书 / xiaohongshu.com。让你的 AI 助手直接访问小红书�
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=xpzouying/xiaohongshu-mcp&type=Timeline)](https://www.star-history.com/#xpzouying/xiaohongshu-mcp&Timeline)
+<!-- 图表由 .github/workflows/star-history.yml 每周生成到 star-history 数据分支（star-history.com 托管图表因 GitHub API 限制已失效） -->
+<a href="https://www.star-history.com/#xpzouying/xiaohongshu-mcp&Timeline">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/xpzouying/xiaohongshu-mcp/star-history/assets/star-history-dark.svg" />
+    <img alt="Star History Chart" src="https://raw.githubusercontent.com/xpzouying/xiaohongshu-mcp/star-history/assets/star-history.svg" />
+  </picture>
+</a>
 
 ## 赞赏支持
 
@@ -328,16 +334,16 @@ https://github.com/user-attachments/assets/cc385b6c-422c-489b-a5fc-63e92c695b80
 **主程序（MCP 服务）：**
 
 - **macOS Apple Silicon**: `xiaohongshu-mcp-darwin-arm64`
-- **macOS Intel**: `xiaohongshu-mcp-darwin-amd64`
 - **Windows x64**: `xiaohongshu-mcp-windows-amd64.exe`
 - **Linux x64**: `xiaohongshu-mcp-linux-amd64`
 
 **登录工具：**
 
 - **macOS Apple Silicon**: `xiaohongshu-login-darwin-arm64`
-- **macOS Intel**: `xiaohongshu-login-darwin-amd64`
 - **Windows x64**: `xiaohongshu-login-windows-amd64.exe`
 - **Linux x64**: `xiaohongshu-login-linux-amd64`
+
+> 目前支持以上三个平台。macOS Intel 与 Linux ARM64 暂不支持。
 
 使用步骤：
 
@@ -427,8 +433,8 @@ docker build -t xpzouying/xiaohongshu-mcp .
 
 Docker 版本会自动：
 
-- 配置 Chrome 浏览器和中文字体
-- 挂载 `./data` 用于存储 cookies
+- 配置内置浏览器和中文字体
+- 挂载 `./data` 用于存储 cookies 和运行数据目录
 - 挂载 `./images` 用于存储发布的图片
 - 暴露 18060 端口供 MCP 连接
 
@@ -997,15 +1003,15 @@ npx mcporter list xiaohongshu-mcp
 **重要：在群里问问题之前，请一定要先仔细看完 README 文档以及查看 Issues。**
 
 ### 微信群
-|                                                 微信群 21 群                                        |                                                 微信群 22 群                                         |
+|                                                 微信群 25 群                                        |                                                 微信群 26 群                                         |
 | :------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------: |
-| <img src="https://github.com/user-attachments/assets/ff02e60c-e850-4931-87de-c10e32919a74" alt="WechatIMG119" width="300"> | <img src="https://github.com/user-attachments/assets/7a923529-425d-4005-bad8-64a3ecb5a819" alt="WechatIMG119" width="300">|
+| <img src="https://github.com/user-attachments/assets/49ef7f34-d1f0-4161-8e3e-fead4ca404df" alt="WechatIMG119" width="300"> | <img src="https://github.com/user-attachments/assets/0204d097-b446-4845-8322-d72dc1d2eac8" alt="WechatIMG119" width="300">|
 
 ### 飞书群
 
-|                                                         飞书 1 群                                                         |                                                         飞书 2 群                                                         |                                                         飞书 3 群                                                         |                                                         飞书 4 群                                                         |
+|                                                         飞书 2 群                                                         |                                                         飞书 3 群                                                         |                                                         飞书 4 群                                                         |                                                         飞书 5 群                                                         |
 | :-----------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: |
-| <img src="https://github.com/user-attachments/assets/65579771-3543-4661-9b48-def48eed609b" alt="qr-feishu01" width="260"> | <img src="https://github.com/user-attachments/assets/4983ea42-ce5b-4e26-a8c0-33889093b579" alt="qr-feishu02" width="260"> | <img src="https://github.com/user-attachments/assets/c77b45da-6028-4d3a-b421-ccc6c7210695" alt="qr-feishu03" width="260"> | <img src="https://github.com/user-attachments/assets/c42f5595-71cd-4d9b-b7f8-0c333bd25e2b" alt="qr-feishu04" width="260"> |
+| <img src="https://github.com/user-attachments/assets/4983ea42-ce5b-4e26-a8c0-33889093b579" alt="qr-feishu02" width="260"> | <img src="https://github.com/user-attachments/assets/c77b45da-6028-4d3a-b421-ccc6c7210695" alt="qr-feishu03" width="260"> | <img src="https://github.com/user-attachments/assets/c42f5595-71cd-4d9b-b7f8-0c333bd25e2b" alt="qr-feishu04" width="260"> | <img src="https://github.com/user-attachments/assets/c032801c-bf02-4e8e-81ad-fb8471b3d765" alt="qr-feishu05" width="260"> |
 
 > **注意：**
 >
@@ -1077,3 +1083,11 @@ npx mcporter list xiaohongshu-mcp
 </table>
 
 本项目遵循 [all-contributors](https://github.com/all-contributors/all-contributors) 规范。欢迎任何形式的贡献！
+
+## 📄 许可证
+
+本项目采用 [Apache License 2.0](LICENSE) 开源。
+
+你可以自由地使用、修改和分发本项目，包括用于商业用途，只需保留原始的版权声明和许可证文件。详细条款以 [LICENSE](LICENSE) 文件为准。
+
+向本项目提交的贡献，默认按同一许可证授权。
