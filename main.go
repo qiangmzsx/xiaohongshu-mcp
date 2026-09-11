@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"flag"
+	"os"
 
 	"github.com/sirupsen/logrus"
 	"github.com/xpzouying/xiaohongshu-mcp/browser"
@@ -19,11 +20,17 @@ func main() {
 		binPath   string // 浏览器二进制文件路径
 		port      string
 		transport string // 传输协议：http 或 stdio
+		token     string
 	)
 	flag.BoolVar(&headless, "headless", true, "是否无头模式")
 	flag.StringVar(&port, "port", ":18060", "端口")
 	flag.StringVar(&transport, "transport", "http", "传输协议: http 或 stdio")
+	flag.StringVar(&token, "token", "", "鉴权 Token，留空则读取 AUTH_TOKEN")
+
 	flag.Parse()
+	if token == "" {
+		token = os.Getenv("AUTH_TOKEN")
+	}
 
 	logrus.Infof("xiaohongshu-mcp version: %s", version)
 
@@ -45,8 +52,7 @@ func main() {
 	xiaohongshuService := NewXiaohongshuService()
 
 	// 创建并启动应用服务器
-	appServer := NewAppServer(xiaohongshuService)
-
+	appServer := NewAppServer(xiaohongshuService, token)
 	switch transport {
 	case "stdio":
 		// 使用 stdio 传输模式
@@ -60,5 +66,9 @@ func main() {
 		}
 	default:
 		logrus.Fatalf("不支持的传输协议: %s, 请使用 http 或 stdio", transport)
+	}
+
+	if err := appServer.Start(port); err != nil {
+		logrus.Fatalf("failed to run server: %v", err)
 	}
 }
